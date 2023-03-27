@@ -31,6 +31,7 @@ importers:
       typescript: ^4.5.3
       ui: workspace:*
       zod: ^3.21.4
+      zod-validation-error: ^1.1.0
     dependencies:
       '@tanstack/react-query': 4.28.0_biqbaboplfbrettd7655fr4n2y
       actions: link:../../packages/actions
@@ -41,6 +42,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       ui: link:../../packages/ui
       zod: 3.21.4
+      zod-validation-error: 1.1.0_zod@3.21.4
     devDependencies:
       '@babel/core': 7.21.3
       '@types/node': 18.15.10
@@ -2546,6 +2548,15 @@ packages:
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+
+  /zod-validation-error/1.1.0_zod@3.21.4:
+    resolution: {integrity: sha512-CI0zGWQjyDN0sLcmFiD+wnvkkJaLo6hNB4JBUDltkl6+CeHfnnQKU4Ff6ktMc+VmO/j2+vtLlx4S5xaw8YQN6A==}
+    engines: {node: ^14.17 || >=16.0.0}
+    peerDependencies:
+      zod: ^3.18.0
+    dependencies:
+      zod: 3.21.4
+    dev: false
 
   /zod/3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}

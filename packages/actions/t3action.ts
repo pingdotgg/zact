@@ -1,4 +1,5 @@
 import type z from "zod";
+import { fromZodError } from "zod-validation-error";
 
 declare const brand: unique symbol;
 
@@ -21,8 +22,13 @@ export function t3<InputType extends z.ZodTypeAny>(validator?: InputType) {
     // The wrapper that actually validates
     const validatedAction = async (input: z.infer<InputType>) => {
       if (validator) {
+        // This will throw if the input is invalid
         const result = validator.safeParse(input);
-        if (!result.success) throw new Error("invalid input");
+
+        if (!result.success) {
+          const validatedError = fromZodError(result.error);
+          throw validatedError;
+        }
       }
       return await action(input);
     };

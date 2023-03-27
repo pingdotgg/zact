@@ -12,7 +12,7 @@ export function useZact<
 
   const [data, setData] = useState<ResponseType | null>(null);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isRunning, setIsLoading] = useState(false);
   const [err, setErr] = useState<Error | null>(null);
 
   const mutate = useMemo(
@@ -36,7 +36,7 @@ export function useZact<
   return {
     mutate,
     data,
-    isLoading,
+    isRunning,
     error: err,
   };
 }

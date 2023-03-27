@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export const T3TestComponent = () => {
   const [input, setInput] = useState("");
-  const { mutate, data, isLoading, error } = useZact(validatedAction);
+  const { mutate, data, isRunning, error } = useZact(validatedAction);
 
   return (
     <div className="flex flex-col text-xl gap-4 text-center w-full md:max-w-xl">
@@ -19,7 +19,7 @@ export const T3TestComponent = () => {
       <button onClick={() => mutate({ stuff: input })}>
         Run server action
       </button>
-      {isLoading && <div>Loading...</div>}
+      {isRunning && <div>Loading...</div>}
       {error?.message}
       {data?.message}
     </div>

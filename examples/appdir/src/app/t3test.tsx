@@ -1,12 +1,12 @@
 "use client";
 
-import { t3Test } from "./action";
-import { useT3 } from "actions/useT3";
+import { validatedAction } from "./action";
+import { useZact } from "zact";
 import { useState } from "react";
 
 export const T3TestComponent = () => {
   const [input, setInput] = useState("");
-  const { mutate, data, isLoading, error } = useT3(t3Test);
+  const { mutate, data, isLoading, error } = useZact(validatedAction);
 
   return (
     <div className="flex flex-col text-xl gap-4 text-center">

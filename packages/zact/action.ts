@@ -9,16 +9,16 @@ type ActionType<InputType extends z.ZodTypeAny, ResponseType extends any> = (
   input: z.infer<InputType>
 ) => Promise<ResponseType>;
 
-export type T3Action<
+export type ZactAction<
   InputType extends z.ZodTypeAny,
   ResponseType extends any
 > = Brand<ActionType<InputType, ResponseType>, "t3action">;
 
-export function t3<InputType extends z.ZodTypeAny>(validator?: InputType) {
+export function zact<InputType extends z.ZodTypeAny>(validator?: InputType) {
   // This is the "factory" that is created on call of t3. You pass it a "use server" function and it will validate the input before you call it
   return function <ResponseType extends any>(
     action: ActionType<InputType, ResponseType>
-  ): T3Action<InputType, ResponseType> {
+  ): ZactAction<InputType, ResponseType> {
     // The wrapper that actually validates
     const validatedAction = async (input: z.infer<InputType>) => {
       if (validator) {
@@ -33,6 +33,6 @@ export function t3<InputType extends z.ZodTypeAny>(validator?: InputType) {
       return await action(input);
     };
 
-    return validatedAction as T3Action<InputType, ResponseType>;
+    return validatedAction as ZactAction<InputType, ResponseType>;
   };
 }

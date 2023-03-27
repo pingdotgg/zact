@@ -22,7 +22,7 @@ export const someServerAction = zact(z.object({ stuff: z.string().min(6) }))(
 );
 
 // component.tsx
-("use client");
+"use client";
 
 import { someServerAction } from "./action";
 import { useZact } from "zact";

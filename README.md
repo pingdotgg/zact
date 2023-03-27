@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## TODO
 
-## Getting Started
+- [ ] Explore how useSwr works without a context
+- [x] Figure out if a "use server" function calling a "use server" function goes over network or not
+  - JJ says it does NOT go over network
+- [ ] Figure out how the fuck we wrap a server function with zod in a way that doesn't suck ass
 
-First, run the development server:
+```ts
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+export const t3action.validate(z.object({stuff: "aaa"}))(async (input) => {
+    "use server";
+    // you now can use `input` and it's type is based on z.object's validation. Throws earlier if invalid
+});
+
+const roomAction = t3action.validate(z.object({}));
+
+export const addRoom = roomAction(async () => {})
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Alternative
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```ts
+export const t3(z.object({stuff: "aaa"}))(async (input) => {
+    "use server";
+    // you now can use `input` and it's type is based on z.object's validation. Throws earlier if invalid
+});
 
-[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+const roomAction = t3(z.object({roomKey: z.string()}));
+export const addRoom = roomAction(async () => {});
+```

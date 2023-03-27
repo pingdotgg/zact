@@ -1,7 +1,7 @@
 "use client";
 
 import { validatedAction } from "./action";
-import { useZact } from "zact";
+import { useZact } from "zact/client";
 import { useState } from "react";
 
 export const T3TestComponent = () => {

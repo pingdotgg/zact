@@ -1,7 +1,7 @@
 "use client";
 
 import type z from "zod";
-import type { ZactAction } from "./action";
+import type { ZactAction } from "./server";
 import { useMemo, useRef, useState } from "react";
 
 export function useZact<

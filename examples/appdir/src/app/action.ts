@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { zact } from "zact";
+import { zact } from "zact/server";
 
 function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));

@@ -9,7 +9,7 @@ export const T3TestComponent = () => {
   const { mutate, data, isLoading, error } = useZact(validatedAction);
 
   return (
-    <div className="flex flex-col text-xl gap-4 text-center">
+    <div className="flex flex-col text-xl gap-4 text-center w-full md:max-w-xl">
       <input
         type={"text"}
         value={input}

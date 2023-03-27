@@ -1,7 +1,7 @@
 "use client";
 
 import { t3Test } from "./action";
-import { useT3 } from "../t3-package/useT3";
+import { useT3 } from "actions/useT3";
 import { useState } from "react";
 
 export const T3TestComponent = () => {

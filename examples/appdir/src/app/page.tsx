@@ -1,5 +1,4 @@
 import { Inter } from "next/font/google";
-import { Counter } from "./counter";
 import { T3TestComponent } from "./t3test";
 
 const inter = Inter({ subsets: ["latin"] });

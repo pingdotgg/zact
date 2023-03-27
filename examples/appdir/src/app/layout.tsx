@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import T3Wrapper from "../t3-package/wrapper";
+import T3Wrapper from "actions/wrapper";
 
 export default function RootLayout({
   children,

@@ -1,0 +1,33 @@
+{
+  "name": "web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.28.0",
+    "actions": "workspace:*",
+    "autoprefixer": "10.4.14",
+    "next": "^13.2.5-canary.18",
+    "postcss": "8.4.21",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "tailwindcss": "^3.2.7",
+    "zod": "^3.21.4",
+    "zod-validation-error": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@types/node": "18.15.10",
+    "@types/react": "18.0.29",
+    "@types/react-dom": "18.0.11",
+    "eslint": "7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "^4.5.3"
+  }
+}

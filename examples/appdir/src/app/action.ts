@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { t3 } from "../t3-package/t3action";
+import { t3 } from "actions/t3action";
 
 function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));

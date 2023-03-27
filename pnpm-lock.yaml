@@ -8,11 +8,31 @@ importers:
       prettier: latest
       turbo: latest
     devDependencies:
-      eslint-config-custom: link:packages/eslint-config-custom
+      eslint-config-custom: link:common/eslint-config-custom
       prettier: 2.8.7
       turbo: 1.8.5
 
-  apps/web:
+  common/eslint-config-custom:
+    specifiers:
+      eslint: ^7.23.0
+      eslint-config-next: 13.0.0
+      eslint-config-prettier: ^8.3.0
+      eslint-config-turbo: latest
+      eslint-plugin-react: 7.31.8
+      typescript: ^4.7.4
+    dependencies:
+      eslint: 7.32.0
+      eslint-config-next: 13.0.0_jofidmxrjzhj7l6vknpw5ecvfe
+      eslint-config-prettier: 8.8.0_eslint@7.32.0
+      eslint-config-turbo: 0.0.10_eslint@7.32.0
+      eslint-plugin-react: 7.31.8_eslint@7.32.0
+    devDependencies:
+      typescript: 4.9.5
+
+  common/tsconfig:
+    specifiers: {}
+
+  examples/appdir:
     specifiers:
       '@babel/core': ^7.0.0
       '@tanstack/react-query': ^4.28.0
@@ -30,7 +50,6 @@ importers:
       tailwindcss: ^3.2.7
       tsconfig: workspace:*
       typescript: ^4.5.3
-      ui: workspace:*
       zod: ^3.21.4
       zod-validation-error: ^1.1.0
     dependencies:
@@ -42,7 +61,6 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       tailwindcss: 3.2.7_postcss@8.4.21
-      ui: link:../../packages/ui
       zod: 3.21.4
       zod-validation-error: 1.1.0_zod@3.21.4
     devDependencies:
@@ -51,8 +69,8 @@ importers:
       '@types/react': 18.0.29
       '@types/react-dom': 18.0.11
       eslint: 7.32.0
-      eslint-config-custom: link:../../packages/eslint-config-custom
-      tsconfig: link:../../packages/tsconfig
+      eslint-config-custom: link:../../common/eslint-config-custom
+      tsconfig: link:../../common/tsconfig
       typescript: 4.9.5
 
   packages/actions:
@@ -72,46 +90,8 @@ importers:
       '@types/react': 18.0.29
       '@types/react-dom': 18.0.11
       eslint: 7.32.0
-      eslint-config-custom: link:../eslint-config-custom
-      tsconfig: link:../tsconfig
-      typescript: 4.9.5
-
-  packages/eslint-config-custom:
-    specifiers:
-      eslint: ^7.23.0
-      eslint-config-next: 13.0.0
-      eslint-config-prettier: ^8.3.0
-      eslint-config-turbo: latest
-      eslint-plugin-react: 7.31.8
-      typescript: ^4.7.4
-    dependencies:
-      eslint: 7.32.0
-      eslint-config-next: 13.0.0_jofidmxrjzhj7l6vknpw5ecvfe
-      eslint-config-prettier: 8.8.0_eslint@7.32.0
-      eslint-config-turbo: 0.0.10_eslint@7.32.0
-      eslint-plugin-react: 7.31.8_eslint@7.32.0
-    devDependencies:
-      typescript: 4.9.5
-
-  packages/tsconfig:
-    specifiers: {}
-
-  packages/ui:
-    specifiers:
-      '@types/react': ^18.0.17
-      '@types/react-dom': ^18.0.6
-      eslint: ^7.32.0
-      eslint-config-custom: workspace:*
-      react: ^18.2.0
-      tsconfig: workspace:*
-      typescript: ^4.5.2
-    devDependencies:
-      '@types/react': 18.0.29
-      '@types/react-dom': 18.0.11
-      eslint: 7.32.0
-      eslint-config-custom: link:../eslint-config-custom
-      react: 18.2.0
-      tsconfig: link:../tsconfig
+      eslint-config-custom: link:../../common/eslint-config-custom
+      tsconfig: link:../../common/tsconfig
       typescript: 4.9.5
 
 packages:
@@ -1916,6 +1896,7 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
+    dev: false
 
   /lru-cache/5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -2279,6 +2260,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
 
   /read-cache/1.0.0:
     resolution: {integrity: sha512-Owdv/Ft7IjOgm/i0xvNDZ1LrRANRfew4b2prF3OWMQLxLfu3bS8FVhCsrSCMK4lR56Y9ya+AThoTpDCTxCmpRA==}

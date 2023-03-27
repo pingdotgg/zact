@@ -22,11 +22,11 @@ export const validatedAction = zact(z.object({ stuff: z.string().min(6) }))(
 // component.tsx
 "use client";
 
-import { someServerAction } from "./action";
+import { validatedAction } from "./action";
 import { useZact } from "zact";
 
 export const zactTestComponent = () => {
-  const { mutate, data, isLoading } = useZact(someServerAction);
+  const { mutate, data, isLoading } = useZact(validatedAction);
 
   return (
     <div className="flex flex-col text-xl gap-4 text-center">

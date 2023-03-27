@@ -13,6 +13,6 @@ export const t3Test = t3(z.object({ stuff: z.string().min(6) }))(
 
     await wait(3000);
 
-    return { message: "hello world" };
+    return { message: `hello ${input.stuff}` };
   }
 );

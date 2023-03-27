@@ -1,8 +1,18 @@
 "use server";
 
-export const doDoubling = async (i: number) => {
-  console.log("doing server things", i, doDoubling.validator);
-  return i * 2;
-};
+import { z } from "zod";
+import { t3 } from "../t3-package/t3action";
 
-doDoubling.validator = "hi";
+function wait(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export const t3Test = t3(z.object({ stuff: z.string().min(6) }))(
+  async (input) => {
+    console.log("[SERVER]: Received input", input);
+
+    await wait(3000);
+
+    return { message: "hello world" };
+  }
+);

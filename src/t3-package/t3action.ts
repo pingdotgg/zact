@@ -1,5 +1,4 @@
-"use server";
-import z from "zod";
+import type z from "zod";
 
 declare const brand: unique symbol;
 
@@ -14,7 +13,7 @@ export type T3Action<
   ResponseType extends any
 > = Brand<ActionType<InputType, ResponseType>, "t3action">;
 
-function t3<InputType extends z.ZodTypeAny>(validator?: InputType) {
+export function t3<InputType extends z.ZodTypeAny>(validator?: InputType) {
   // This is the "factory" that is created on call of t3. You pass it a "use server" function and it will validate the input before you call it
   return function <ResponseType extends any>(
     action: ActionType<InputType, ResponseType>
@@ -31,10 +30,3 @@ function t3<InputType extends z.ZodTypeAny>(validator?: InputType) {
     return validatedAction as T3Action<InputType, ResponseType>;
   };
 }
-
-export const t3Test = t3(z.object({ stuff: z.string().min(6) }))(
-  async (input) => {
-    console.log("doing server things", input);
-    return null;
-  }
-);

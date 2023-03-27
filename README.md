@@ -3,24 +3,22 @@
 Nothing to see here...
 🤐
 
+`npm install zact`
+
 ```ts
 // action.ts
 "use server";
 
 import { z } from "zod";
-import { zact } from "zact";
-
-function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-export const someServerAction = zact(z.object({ stuff: z.string().min(6) }))(
+import { zact } from "zact/server";
+export const validatedAction = zact(z.object({ stuff: z.string().min(6) }))(
   async (input) => {
-    await wait(3000);
-    return { message: "hello world" };
+    return { message: `hello ${input.stuff}` };
   }
 );
+```
 
+```ts
 // component.tsx
 "use client";
 

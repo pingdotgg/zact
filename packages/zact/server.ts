@@ -12,10 +12,10 @@ type ActionType<InputType extends z.ZodTypeAny, ResponseType extends any> = (
 export type ZactAction<
   InputType extends z.ZodTypeAny,
   ResponseType extends any
-> = Brand<ActionType<InputType, ResponseType>, "t3action">;
+> = Brand<ActionType<InputType, ResponseType>, "zact-action">;
 
 export function zact<InputType extends z.ZodTypeAny>(validator?: InputType) {
-  // This is the "factory" that is created on call of t3. You pass it a "use server" function and it will validate the input before you call it
+  // This is the "factory" that is created on call of zact. You pass it a "use server" function and it will validate the input before you call it
   return function <ResponseType extends any>(
     action: ActionType<InputType, ResponseType>
   ): ZactAction<InputType, ResponseType> {

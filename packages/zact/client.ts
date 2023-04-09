@@ -40,3 +40,46 @@ export function useZact<
     error: err,
   };
 }
+
+/**
+ * Object containing zact server actions
+ */
+export type ZactServerRoute = {
+  [key: string]: ZactAction<z.ZodTypeAny, unknown> | ZactServerRoute;
+};
+
+/**
+ * Object containing zact client actions
+ */
+export type ZactClientRoute<Routes extends ZactServerRoute> = {
+  [Key in keyof Routes]: Routes[Extract<Key, string>] extends ZactServerRoute
+    ? ZactClientRoute<Routes[Extract<Key, string>]>
+    : typeof useZact<
+        Routes[Extract<Key, string>] extends ZactAction<infer x, infer y>
+          ? x
+          : never,
+        Routes[Extract<Key, string>] extends ZactAction<infer x, infer y>
+          ? y
+          : never
+      >;
+};
+
+/**
+ * Use Zact Client
+ * @param serverRoutes Server Routes
+ * @returns Client Routes
+ */
+export function useZactClient<Routes extends ZactServerRoute>(
+  serverRoutes: Routes
+): ZactClientRoute<Routes> {
+  const clientRoutes: ZactClientRoute<Routes> = {};
+  Object.keys(serverRoutes).forEach((key: string) => {
+    const routeOrAction = serverRoutes[key];
+    if (typeof routeOrAction === "object") {
+      clientRoutes[key] = useZactClient(routeOrAction);
+    } else {
+      clientRoutes[key] = () => useZact(routeOrAction);
+    }
+  });
+  return clientRoutes;
+}

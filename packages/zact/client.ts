@@ -65,7 +65,7 @@ export type ZactClientRoute<Routes extends ZactServerRoute> = {
 };
 
 /**
- * Use Zact Client
+ * Create Zact Client
  * @param serverRoutes Server Routes
  * @returns Client Routes
  */

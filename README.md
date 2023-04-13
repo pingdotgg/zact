@@ -64,10 +64,10 @@ const validatedActionB = zact(z.object({ stuff: z.string().min(6) }))(
 // client.ts
 "use client";
 
-import { useZactClient } from "zact/client";
+import { createZactClient } from "zact/client";
 import { validatedActionA, validatedActionB } from "./actions";
 
-export const client = useZactClient({
+export const client = createZactClient({
   a: validatedActionA,
   other: { b: validatedActionB },
 });

@@ -69,16 +69,17 @@ export type ZactClientRoute<Routes extends ZactServerRoute> = {
  * @param serverRoutes Server Routes
  * @returns Client Routes
  */
-export function useZactClient<Routes extends ZactServerRoute>(
+export function createZactClient<Routes extends ZactServerRoute>(
   serverRoutes: Routes
 ): ZactClientRoute<Routes> {
   const clientRoutes: ZactClientRoute<Routes> = {};
   Object.keys(serverRoutes).forEach((key: string) => {
     const routeOrAction = serverRoutes[key];
     if (typeof routeOrAction === "object") {
-      clientRoutes[key] = useZactClient(routeOrAction);
+      clientRoutes[key] = createZactClient(routeOrAction);
     } else {
-      clientRoutes[key] = () => useZact(routeOrAction);
+      const useZactCreate = () => useZact(routeOrAction);
+      clientRoutes[key] = useZactCreate;
     }
   });
   return clientRoutes;

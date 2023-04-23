@@ -23,7 +23,7 @@ export const validatedAction = zact(z.object({ stuff: z.string().min(6) }))(
 "use client";
 
 import { validatedAction } from "./action";
-import { useZact } from "zact";
+import { useZact } from "zact/client";
 
 export const zactTestComponent = () => {
   const { mutate, data, isRunning } = useZact(validatedAction);

@@ -1,10 +1,10 @@
-# Boring
+# Zact - Zod Server ACTions
 
-Nothing to see here...
-🤐
+We like NextJS Server Actions. We wanted to love them. This package makes them validated and typesafe, so you can use them in things that aren't forms.
 
 `npm install zact`
 
+### Backend
 ```ts
 // action.ts
 "use server";
@@ -18,6 +18,7 @@ export const validatedAction = zact(z.object({ stuff: z.string().min(6) }))(
 );
 ```
 
+### Client WITH custom hook
 ```ts
 // component.tsx
 "use client";
@@ -35,6 +36,29 @@ export const zactTestComponent = () => {
       </button>
       {isRunning && <div>Loading...</div>}
       {data?.message}
+    </div>
+  );
+};
+```
+
+### Client WITHOUT custom hook
+Yes you can just import them and call them like promises too
+
+```ts
+// component.tsx
+"use client";
+
+import { validatedAction } from "./action";
+
+export const zactTestComponent = () => {
+
+  return (
+    <div className="flex flex-col text-xl gap-4 text-center">
+      <button onClick={() => {
+        validatedAction({ stuff: "testtestaet" }).then((response) => console.log("response!", response));
+      }>
+        Run server action
+      </button>
     </div>
   );
 };

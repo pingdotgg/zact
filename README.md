@@ -26,15 +26,15 @@ export const validatedAction = zact(z.object({ stuff: z.string().min(6) }))(
 import { validatedAction } from "./action";
 import { useZact } from "zact/client";
 
-export const zactTestComponent = () => {
-  const { mutate, data, isRunning } = useZact(validatedAction);
+export const ZactTestComponent = () => {
+  const { mutate, data, isLoading } = useZact(validatedAction);
 
   return (
     <div className="flex flex-col text-xl gap-4 text-center">
       <button onClick={() => mutate({ stuff: "testtestaet" })}>
         Run server action
       </button>
-      {isRunning && <div>Loading...</div>}
+      {isLoading && <div>Loading...</div>}
       {data?.message}
     </div>
   );
@@ -50,7 +50,7 @@ Yes you can just import them and call them like promises too
 
 import { validatedAction } from "./action";
 
-export const zactTestComponent = () => {
+export const ZactTestComponent = () => {
 
   return (
     <div className="flex flex-col text-xl gap-4 text-center">

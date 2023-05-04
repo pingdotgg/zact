@@ -29,5 +29,6 @@
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
     "typescript": "5.0.4"
-  }
+  },
+  "packageManager": "pnpm@7.27.0"
 }

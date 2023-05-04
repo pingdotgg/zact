@@ -22,5 +22,6 @@
   },
   "peerDependencies": {
     "next": "^13.2.5-canary.x"
-  }
+  },
+  "packageManager": "pnpm@7.27.0"
 }

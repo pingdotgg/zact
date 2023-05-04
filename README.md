@@ -14,6 +14,7 @@ npm install zact
 
 import { z } from "zod";
 import { zact } from "zact/server";
+
 export const validatedAction = zact(z.object({ stuff: z.string().min(6) }))(
   async (input) => {
     return { message: `hello ${input.stuff}` };
@@ -47,7 +48,7 @@ export const zactTestComponent = () => {
 
 ### Client WITHOUT Custom Hook
 
-Yes you can just import them and call them like promises, too:
+Yes, you can also just import them and call them like promises:
 
 ```ts
 // component.tsx
@@ -56,7 +57,6 @@ Yes you can just import them and call them like promises, too:
 import { validatedAction } from "./action";
 
 export const zactTestComponent = () => {
-
   return (
     <div className="flex flex-col text-xl gap-4 text-center">
       <button onClick={() => {

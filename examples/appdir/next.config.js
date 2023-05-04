@@ -4,6 +4,7 @@ const nextConfig = {
   transpilePackages: ["zact"],
   experimental: {
     appDir: true,
+    runtime: "experimental-edge",
   },
 };
 

@@ -6,7 +6,7 @@ declare const brand: unique symbol;
 type Brand<T, TBrand extends string> = T & { [brand]: TBrand };
 
 type ActionType<InputType extends z.ZodTypeAny, ResponseType extends any> = (
-  input: z.infer<InputType>
+  input: z.input<InputType>
 ) => Promise<ResponseType>;
 
 export type ZactAction<
@@ -20,7 +20,7 @@ export function zact<InputType extends z.ZodTypeAny>(validator?: InputType) {
     action: ActionType<InputType, ResponseType>
   ): ZactAction<InputType, ResponseType> {
     // The wrapper that actually validates
-    const validatedAction = async (input: z.infer<InputType>) => {
+    const validatedAction = async (input: z.input<InputType>) => {
       if (validator) {
         // This will throw if the input is invalid
         const result = validator.safeParse(input);

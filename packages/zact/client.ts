@@ -16,7 +16,7 @@ export function useZact<
   const [err, setErr] = useState<Error | null>(null);
 
   const mutate = useMemo(
-    () => async (input: z.infer<InputType>) => {
+    () => async (input: z.input<InputType>) => {
       setIsLoading(true);
       setErr(null);
       setData(null);

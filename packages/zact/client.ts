@@ -7,7 +7,9 @@ import { useMemo, useRef, useState } from "react";
 export function useZact<
   InputType extends z.ZodTypeAny,
   ResponseType extends any
->(action: ZactAction<InputType, ResponseType>) {
+>(action: ZactAction<InputType, ResponseType>, 
+  onSuccess?: (data: ResponseType) => void,
+  ) {
   const doAction = useRef(action);
 
   const [data, setData] = useState<ResponseType | null>(null);
@@ -24,6 +26,7 @@ export function useZact<
         const result = await doAction.current(input);
         setData(result);
         setIsLoading(false);
+        onSuccess && onSuccess(result);
       } catch (e) {
         console.log(e);
         setErr(e as Error);

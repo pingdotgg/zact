@@ -26,7 +26,7 @@ export const validatedAction = zact(z.object({ stuff: z.string().min(6) }))(
 import { validatedAction } from "./action";
 import { useZact } from "zact/client";
 
-export const zactTestComponent = () => {
+export default function ZactTestComponent() {
   const { mutate, data, isRunning } = useZact(validatedAction);
 
   return (
@@ -38,7 +38,7 @@ export const zactTestComponent = () => {
       {data?.message}
     </div>
   );
-};
+}
 ```
 
 ### Client WITHOUT custom hook
@@ -50,7 +50,7 @@ Yes you can just import them and call them like promises too
 
 import { validatedAction } from "./action";
 
-export const zactTestComponent = () => {
+export default function ZactTestComponent() {
   return (
     <div>
       <button onClick={() => {
@@ -60,5 +60,5 @@ export const zactTestComponent = () => {
       </button>
     </div>
   );
-};
+}
 ```

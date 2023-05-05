@@ -1,6 +1,6 @@
 # Zact - Zod Server ACTions
 
-We like NextJS Server Actions. We wanted to love them. This package makes them validated and typesafe, so you can use them in things that aren't forms.
+We like Next.js Server Actions. We wanted to love them. This package makes them validated and typesafe, so you can use them in things that aren't forms.
 
 `npm install zact`
 

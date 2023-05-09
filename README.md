@@ -27,14 +27,15 @@ import { validatedAction } from "./action";
 import { useZact } from "zact/client";
 
 export const zactTestComponent = () => {
-  const { mutate, data, isRunning } = useZact(validatedAction);
+  const { mutate, data, isRunning, error } = useZact(validatedAction);
 
   return (
     <div>
-      <button onClick={() => mutate({ stuff: "testtestaet" })}>
+      <button onClick={() => mutate({ stuff: "test" })}>
         Run server action
       </button>
       {isRunning && <div>Loading...</div>}
+      {error?.message}
       {data?.message}
     </div>
   );

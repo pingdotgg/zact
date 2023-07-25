@@ -12,22 +12,22 @@ export function useZact<
 
   const [data, setData] = useState<ResponseType | null>(null);
 
-  const [isRunning, setIsLoading] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
   const [err, setErr] = useState<Error | null>(null);
 
   const mutate = useMemo(
     () => async (input: z.infer<InputType>) => {
-      setIsLoading(true);
+      setIsRunning(true);
       setErr(null);
       setData(null);
       try {
         const result = await doAction.current(input);
         setData(result);
-        setIsLoading(false);
+        setIsRunning(false);
       } catch (e) {
         console.log(e);
         setErr(e as Error);
-        setIsLoading(false);
+        setIsRunning(false);
       }
     },
     []

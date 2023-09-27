@@ -1,5 +1,10 @@
 # Zact - Zod Server ACTions
 
+## DEPRECATED
+I don't plan to support this. [next-safe-action](https://github.com/TheEdoRan/next-safe-action) is better and well maintained, credits to @TheEdoRan for building it 🙏
+
+## LEGACY
+
 We like NextJS Server Actions. We wanted to love them. This package makes them validated and typesafe, so you can use them in things that aren't forms.
 
 `npm install zact`

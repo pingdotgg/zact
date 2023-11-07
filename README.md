@@ -60,7 +60,7 @@ export const zactTestComponent = () => {
     <div>
       <button onClick={() => {
         validatedAction({ stuff: "test" }).then((response) => console.log("response!", response));
-      }>
+      }} >
         Run server action
       </button>
     </div>
